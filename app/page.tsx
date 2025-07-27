@@ -1,66 +1,171 @@
-import { Metadata } from "next"
-import { Button } from "components/Button/Button"
+// app/page.tsx
+"use client"; // 👈 Required in Next.js App Router for components using state/hooks
 
-import { LP_GRID_ITEMS } from "lp-items"
+// 📦 React state for interactivity
+import { useState } from "react";
 
-export const metadata: Metadata = {
-  title: "Next.js Enterprise Boilerplate",
-  twitter: {
-    card: "summary_large_image",
-  },
-  openGraph: {
-    url: "https://next-enterprise.vercel.app/",
-    images: [
-      {
-        width: 1200,
-        height: 630,
-        url: "https://raw.githubusercontent.com/Blazity/next-enterprise/main/.github/assets/project-logo.png",
-      },
-    ],
-  },
-}
+// 🎛️ Radix UI icons for cool button visuals
+import {
+  CheckIcon,
+  Pencil1Icon,
+  TrashIcon,
+  PlusIcon,
+} from "@radix-ui/react-icons";
 
-export default function Web() {
+// 🔧 Utility for conditional classes
+import clsx from "clsx";
+
+// 🧠 UUID to uniquely identify each task
+import { v4 as uuidv4 } from "uuid";
+
+// 📘 Define the structure of a task (TypeScript FTW!)
+type Task = {
+  id: string;
+  title: string;
+  completed: boolean;
+};
+
+// 🧠 Our main to-do page component
+export default function TodoPage() {
+  // ✨ Local state for storing and interacting with tasks
+  const [tasks, setTasks] = useState<Task[]>([]); // 🗃️ All tasks
+  const [newTask, setNewTask] = useState("");     // 🆕 New task input
+  const [editingTaskId, setEditingTaskId] = useState<string | null>(null); // ✏️ ID of the task being edited
+  const [editedTaskTitle, setEditedTaskTitle] = useState("");              // 📝 New title during editing
+
+  // ➕ Add a new task
+  const addTask = () => {
+    if (newTask.trim() === "") return; // 🛑 Don't allow empty tasks
+
+    const newEntry: Task = {
+      id: uuidv4(),
+      title: newTask,
+      completed: false,
+    };
+
+    // Add task to top of the list 📋
+    setTasks([newEntry, ...tasks]);
+
+    // Clear input field 🧹
+    setNewTask("");
+  };
+
+  // ✅ Toggle completion of a task
+  const toggleComplete = (id: string) => {
+    setTasks(tasks.map(task =>
+      task.id === id
+        ? { ...task, completed: !task.completed }
+        : task
+    ));
+  };
+
+  // ❌ Delete a task
+  const deleteTask = (id: string) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
+
+  // ✏️ Start editing a task
+  const startEditing = (task: Task) => {
+    setEditingTaskId(task.id);
+    setEditedTaskTitle(task.title);
+  };
+
+  // 💾 Save the edited task title
+  const saveEditedTask = () => {
+    setTasks(tasks.map(task =>
+      task.id === editingTaskId
+        ? { ...task, title: editedTaskTitle }
+        : task
+    ));
+
+    // Reset editing state ✨
+    setEditingTaskId(null);
+    setEditedTaskTitle("");
+  };
+
+  // 🌟 UI starts here!
   return (
-    <>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto grid max-w-(--breakpoint-xl) px-4 py-8 text-center lg:py-16">
-          <div className="mx-auto place-self-center">
-            <h1 className="mb-4 max-w-2xl text-4xl leading-none font-extrabold tracking-tight md:text-5xl xl:text-6xl dark:text-white">
-              Next.js Enterprise Boilerplate
-            </h1>
-            <p className="mb-6 max-w-2xl font-light text-gray-500 md:text-lg lg:mb-8 lg:text-xl dark:text-gray-400">
-              Jumpstart your enterprise project with our feature-packed, high-performance Next.js boilerplate!
-              Experience rapid UI development, AI-powered code reviews, and an extensive suite of tools for a smooth and
-              enjoyable development process.
-            </p>
-            <Button href="https://github.com/Blazity/next-enterprise" className="mr-3">
-              Get started
-            </Button>
-            <Button
-              href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise"
-              intent="secondary"
+    <main className="min-h-screen bg-zinc-950 text-white flex flex-col items-center p-8">
+      {/* 📝 Page Title */}
+      <h1 className="text-4xl font-bold mb-6">
+        🎯 My Awesome To-Do List
+      </h1>
+
+      {/* 🆕 New Task Input Section */}
+      <div className="flex w-full max-w-md mb-6 gap-2">
+        <input
+          type="text"
+          placeholder="Add a new task..."
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+          className="flex-1 p-3 rounded bg-zinc-800 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+
+        <button
+          onClick={addTask}
+          className="bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded"
+          aria-label="Add task"
+        >
+          <PlusIcon />
+        </button>
+      </div>
+
+      {/* 🗃️ Task List Section */}
+      <ul className="w-full max-w-md space-y-3">
+        {tasks.map((task) => (
+          <li
+            key={task.id}
+            className="flex items-center justify-between bg-zinc-900 rounded px-4 py-3"
+          >
+            {/* 📌 Task Title / Editor */}
+            <div
+              className={clsx("flex-1 text-left cursor-pointer", {
+                "line-through text-zinc-500": task.completed,
+              })}
+              onClick={() => toggleComplete(task.id)}
             >
-              Whaaaaaaaaaaaaaaaat? 🔥☄️🧯🚒🚒🚒🚒☄️🔥🔥🔥🔥
-            </Button>
-          </div>
-        </div>
-      </section>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-(--breakpoint-xl) px-4 py-8 sm:py-16 lg:px-6">
-          <div className="justify-center space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
-            {LP_GRID_ITEMS.map((singleItem) => (
-              <div key={singleItem.title} className="flex flex-col items-center justify-center text-center">
-                <div className="bg-primary-100 dark:bg-primary-900 mb-4 flex size-10 items-center justify-center rounded-full p-1.5 text-blue-700 lg:size-12">
-                  {singleItem.icon}
-                </div>
-                <h3 className="mb-2 text-xl font-bold dark:text-white">{singleItem.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400">{singleItem.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  )
+              {editingTaskId === task.id ? (
+                <input
+                  value={editedTaskTitle}
+                  onChange={(e) => setEditedTaskTitle(e.target.value)}
+                  className="bg-transparent border-b border-zinc-500 focus:outline-none text-white"
+                />
+              ) : (
+                task.title
+              )}
+            </div>
+
+            {/* 🛠️ Action Buttons */}
+            <div className="flex gap-3 items-center">
+              {editingTaskId === task.id ? (
+                <button
+                  onClick={saveEditedTask}
+                  className="text-green-500 hover:text-green-400"
+                  aria-label="Save task"
+                >
+                  <CheckIcon />
+                </button>
+              ) : (
+                <button
+                  onClick={() => startEditing(task)}
+                  className="text-yellow-500 hover:text-yellow-400"
+                  aria-label="Edit task"
+                >
+                  <Pencil1Icon />
+                </button>
+              )}
+
+              <button
+                onClick={() => deleteTask(task.id)}
+                className="text-red-500 hover:text-red-400"
+                aria-label="Delete task"
+              >
+                <TrashIcon />
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
 }
