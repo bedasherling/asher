@@ -1,105 +1,146 @@
+# 🚀 Next.js Enterprise Boilerplate
 
-# [Next.js Enterprise Boilerplate](https://blazity.com/open-source/nextjs-enterprise-boilerplate) 
+**The perfect blend of power, polish, and performance — ready to go right out of the box.**  
+A modern, developer-friendly starter that lets you skip the setup stress and jump straight into building something amazing.
 
-A production-ready template for building enterprise applications with Next.js. This boilerplate provides a solid foundation with carefully selected technologies and ready-to-go infrastructure to help you develop high-quality applications efficiently.
+[📚 Docs](https://docs.blazity.com) • [🌐 Deploy on Vercel](https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise) • [🛠 Blazity](https://blazity.com/)
 
-## Motivation
+---
 
-While most Next.js boilerplates focus on individual developer needs with excessive complexity, **next-enterprise** prioritizes strategic simplicity for enterprise teams. It offers a streamlined foundation with high-impact features that maximize developer productivity and accelerate time-to-market for business-critical applications.
+## 🌟 Why This Boilerplate?
 
-<a href="https://blazity.com/">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/assets/blazity-logo-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="/assets/blazity-logo-light.svg">
-  <img alt="Logo" align="right" height="80" src="/assets/blazity-logo-light.svg">
-</picture>
-</a>
+You know how most boilerplates are either way too basic or so overengineered you need a PhD in DevOps to use them?
 
-> [!NOTE]
-> **Blazity** is a group of Next.js architects. We help organizations architect, optimize, and deploy high-performance Next.js applications at scale. Contact us at [contact@blazity.com](https://blazity.com) if you’d like to talk about your project.
+**This one's different.**  
+It’s *enterprise-ready* but *developer-friendly*. Think fast setup, flexible tooling, clean code, and a rock-solid foundation you can build anything on.
 
+Whether you're solo-building something fun or leading a team at scale — this boilerplate gives you:
 
+- ✅ All the essentials already wired together
+- 🧪 Testing from the jump
+- 💨 Performance perks pre-installed
+- ⚙️ A pro-grade DevOps pipeline
+- 🎯 The freedom to focus on *your* features
 
-## Documentation
+---
 
-There is a separate documentation that explains its functionality, highlights core business values and technical decisions, provides guidelines for future development, and includes architectural diagrams.
+## ✨ What's Inside
 
-We encourage you to [visit our docs (docs.blazity.com)](https://docs.blazity.com) to learn more
+Everything you *actually* want in a production-ready starter (and nothing you don’t):
 
-## Integrated features
+### ⚛️ Next.js 15 — Built for Performance, Made for Scale
 
-### Boilerplate
-With this template you will get all the boilerplate features included:
+Next.js 15 brings the **App Directory** fully into focus — and this boilerplate is built around it. That means:
 
-* [Next.js 15](https://nextjs.org/) - Performance-optimized configuration using App Directory
-* [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS framework for efficient UI development
-* [ESlint 9](https://eslint.org/) and [Prettier](https://prettier.io/) - Code consistency and error prevention
-* [Corepack](https://github.com/nodejs/corepack) & [pnpm](https://pnpm.io/) as the package manager - For project management without compromises 
-* [Strict TypeScript](https://www.typescriptlang.org/) - Enhanced type safety with carefully crafted config and [ts-reset](https://github.com/total-typescript/ts-reset) library
-* [GitHub Actions](https://github.com/features/actions) - Pre-configured workflows including bundle size and performance tracking
-* Perfect Lighthouse score - Optimized performance metrics
-* [Bundle analyzer](https://www.npmjs.com/package/@next/bundle-analyzer) - Monitor and manage bundle size during development
-* Testing suite - [Jest](https://jestjs.io/), [React Testing Library](https://testing-library.com/react), and [Playwright](https://playwright.dev/) for comprehensive testing
-* [Storybook](https://storybook.js.org/) - Component development and documentation
-* Advanced testing - Smoke and acceptance testing capabilities
-* [Conventional commits](https://www.conventionalcommits.org/) - Standardized commit history management
-* [Observability](https://opentelemetry.io/) - Open Telemetry integration
-* [Absolute imports](https://nextjs.org/docs/advanced-features/module-path-aliases) - Simplified import structure
-* [Health checks](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) - Kubernetes-compatible monitoring
-* [Radix UI](https://www.radix-ui.com/) - Headless components for customization
-* [CVA](http://cva.style/) (Class Variance Authority) - Consistent design system creation
-* [Renovate BOT](https://www.whitesourcesoftware.com/free-developer-tools/renovate) - Automated dependency and security updates
-* [Patch-package](https://www.npmjs.com/package/patch-package) - External dependency fixes without compromises
-* Component relationship tools - Graph for managing coupling and cohesion
-* [Semantic Release](https://github.com/semantic-release/semantic-release) - Automated changelog generation
-* [T3 Env](https://env.t3.gg/) - Streamlined environment variable management
+- **Server Components by default** – Faster apps with less JavaScript shipped to the browser.
+- **Routing, layouts, templates, and loading states** – No more `pages/` directory juggling. Define routes like you design them.
+- **Streaming with Suspense** – Load content *as it's ready*. Like magic, but real.
+- **Parallel + Intercepting Routes** – Complex routing without the hacks.
 
-### Infrastructure & deployments
+> 🔮 TL;DR: Next.js 15 doesn’t just make apps faster — it makes *teams* faster.  
+> Perfect for projects that need to scale, evolve, and stay maintainable over time.
 
-#### Vercel
+### 💅 Tailwind CSS v4 — The Utility Framework, Upgraded
 
-Easily deploy your Next.js app with [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=github&utm_campaign=next-enterprise) by clicking the button below:
+Forget wrestling with CSS class names. Tailwind v4 brings:
 
-[![Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise)
+- ⚡ **Faster build times** thanks to Lightning CSS
+- 🎨 **Smarter design tokens** for dark mode, spacing, and theming
+- 🛠 **More intuitive utilities** for animations, effects, and layout
+- 🧼 **Zero-runtime styling** – it all compiles to lean, clean CSS
 
-#### Custom cloud infrastructure
+With Tailwind, you build your UI *right in your markup* — and this boilerplate is already wired up with best practices, so you can just start styling.
 
-**next-enterprise** offers dedicated infrastructure as code (IaC) solutions built with Terraform, designed specifically for deploying Next.js applications based on our extensive experience working with enterprise clients.
+> 🧠 Bonus: Paired with `CVA` (Class Variance Authority), your components stay flexible and consistent across your app.
 
-Learn more in our [documentation (docs.blazity.com)][docs] how to quickstart with the deployments using simple CLI.
+### 🧱 Radix UI — Accessibility Without the Headache
 
-#### Available cloud providers and theirs features:
+Radix UI is a set of **unopinionated, accessible components** that let you build complex UIs without reinventing the a11y wheel.
 
-* **AWS (Amazon Web Services)**
-  * Automated provisioning of AWS infrastructure
-  * Scalable & secure setup using:
-     * VPC - Isolated network infrastructure
-     * Elastic Container Service (ECS) - Container orchestration
-     * Elastic Container Registry (ECR) - Container image storage
-     * Application Load Balancer - Traffic distribution
-     * S3 + CloudFront - Static asset delivery and caching
-     * AWS WAF - Web Application Firewall protection
-     * Redis Cluster - Caching
-  * CI/CD ready - Continuous integration and deployment pipeline
+Included in this boilerplate:
 
-*... more coming soon*
+- 🧩 **Primitives like Dialog, Dropdown, Tooltip, Tabs, etc.**
+- 🎛 **Composability** – Bring your own styles, layout, and interactions
+- ♿ **First-class accessibility** – Keyboard navigation, screen reader support, and WAI-ARIA compliance by default
 
-### Team & maintenance
+Paired with Tailwind and CVA, Radix helps you build beautiful, interactive interfaces **without sacrificing UX or accessibility**.
 
-**next-enterprise** is backed and maintained by [Blazity](https://blazity.com), providing up to date security features and integrated feature updates.
+> 🦾 It’s like having your own in-house accessibility team — except it ships with your code.
 
-#### Active maintainers
+---
 
-- Igor Klepacki ([neg4n](https://github.com/neg4n)) - Open Source Software Developer
-- Tomasz Czechowski ([tomaszczechowski](https://github.com/tomaszczechowski)) - Solutions Architect & DevOps
-- Jakub Jabłoński ([jjablonski-it](https://github.com/jjablonski-it)) - Head of Integrations
+### 🧪 Testing Suite (Yes, it's already there!)
 
-#### All-time contributors
-[bmstefanski](https://github.com/bmstefanski)
+- 🧠 Unit tests with **Jest**
+- 🧪 Component testing with **React Testing Library**
+- 🌐 End-to-end with **Playwright**
+- 🧯 Smoke + acceptance tests for extra resilience
 
-## License
+### 🛠 DX & CI/CD
 
-MIT
+- ✅ GitHub Actions – with workflows for perf + bundle tracking
+- 📦 Bundle analyzer – keep your builds lean
+- 🧠 Semantic Release – auto-changelogs + versioning
+- 🔒 T3 Env – environment variable sanity
+- 🤖 Renovate Bot – auto-updates that won’t ruin your day
+- 🔧 Patch-package – fix external bugs without forks
 
+### 📦 Architecture & Maintenance Perks
 
-[docs]: https://docs.blazity.com/next-enterprise/deployments/enterprise-cli
+- 📚 Absolute imports – stop typing `../../../components`
+- 📊 Component graphs – visualize your app structure
+- 🔬 Observability with OpenTelemetry
+- 🧼 Conventional commits for tidy commit history
+- 🔎 Health checks ready for Kubernetes
+
+---
+
+## ☁️ Cloud Native from Day 1
+
+### Vercel
+
+Click, connect, deploy — it really is that easy.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise)
+
+### 🌍 Custom Cloud Infrastructure (via Terraform)
+
+Got bigger plans? This boilerplate comes with cloud-native blueprints for:
+
+**Amazon Web Services (AWS)**
+
+- 🛡 Secure VPC-based architecture
+- 📦 ECS + ECR for containerized apps
+- ⚖️ Load balancing with ALB
+- 🗂 S3 + CloudFront for blazing-fast assets
+- 🔥 Redis for fast caching
+- 🧪 Built-in CI/CD
+
+➡️ [Read the full deployment guide](https://docs.blazity.com/next-enterprise/deployments/enterprise-cli)
+
+---
+
+## 🧑‍💻 Maintained with ❤️ by Blazity
+
+We’re the nerds behind this boilerplate — obsessed with performance, scalability, and elegant DX.
+
+### Core Team
+
+- 👨‍💻 [Igor Klepacki](https://github.com/neg4n)
+- ⚙️ [Tomasz Czechowski](https://github.com/tomaszczechowski)
+- 🔌 [Jakub Jabłoński](https://github.com/jjablonski-it)
+
+Big shoutout to all [contributors](https://github.com/Blazity/next-enterprise/graphs/contributors)!
+
+---
+
+## 📜 License
+
+MIT – because good tools should be shared.  
+Use it. Fork it. Build amazing stuff.
+
+---
+
+> **Pro tip:** Keep the boring stuff hidden until it's *needed*.  
+> This boilerplate may look minimal, but it's *packed* with potential.  
+> When you're ready to scale, it's ready to grow with you. 🌱
