@@ -41,7 +41,7 @@ export default function Web() {
               href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise"
               intent="secondary"
             >
-              Deploy Now
+              Whaaaaaaaaaaaaaaaat? 🔥☄️🧯🚒🚒🚒🚒☄️🔥🔥🔥🔥
             </Button>
           </div>
         </div>
