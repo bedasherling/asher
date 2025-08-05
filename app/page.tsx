@@ -1,6 +1,7 @@
 // app/page.tsx
 "use client"; // 👈 Required in Next.js App Router for components using state/hooks
 
+
 // 📦 React state for interactivity
 import { useState } from "react";
 
